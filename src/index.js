@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
-const path = require(path);
+const path = require('path');
 //inicializamos express
 const app = express();
 
@@ -19,12 +19,21 @@ app.set('view engine', '.hbs');
 
 //middlewares
 app.use(morgan('dev'));
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 //global variables
+app.use((req, res, next) => {
+    next();
+});
 
 //Routes
 app.use(require('./routes'));
+app.use(require('./routes/authentication'));
+app.use('/links' ,require('./routes/links'));
+
 //Public files
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Starting the server
 app.listen(app.get('port'), () => {

@@ -1,0 +1,16 @@
+create database gover;
+    use gover;
+    create table users(id int(11) not null auto_increment primary key, 
+    username varchar(16) not null, password varchar(60) not null, 
+    fullname varchar(100) not null);
+    describe users;
+
+create table links (id int(11) not null,
+    title varchar(150) not null,
+    url varchar(250) not null,
+    description text,
+    user_id int (11),
+     created_at timestamp not null default current_timestamp,
+    constraint fk_user foreign key (user_id) references users(id));
+
+alter table links modify id int(11) not null auto_increment, add primary key (id);
