@@ -9,7 +9,14 @@ router.get('/add', (req, res) => {
     res.render('links/add');
 });
 
-router.post('/ad', (req,res) =>{
+router.post('/ad', async (req,res) =>{
+    const {title, url, description} = req.body;
+    const newLinks = {
+        title,
+        url,
+        description
+    };    
+    await db.query('INSERT INTO links set ?', [newLinks]);
     res.send('recived');
 });
 
