@@ -9,4 +9,8 @@ router.get('/add', (req, res) => {
     res.render('links/add');
 });
 
+router.post('/ad', (req,res) =>{
+    res.send('recived');
+});
+
 module.exports = router;
