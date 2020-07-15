@@ -2,6 +2,11 @@ const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const flash = require('connect-flash');
+const session = require('express-session');
+const MysqlStore = require('express-mysql-session');
+
+const { database } = require('./keys');
 //inicializamos express
 const app = express();
 
@@ -18,13 +23,25 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 //middlewares
+app.use(session({
+    secret: 'appGo',
+    resave: false,
+    saveUninitialized: false,
+    store: new MysqlStore(database)
+}));
+    //Flash es un modulo que sirve para enviar mensajes en todas las ventanas
+    //flash requiere una session
+app.use(flash());
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+
 //global variables
+
 app.use((req, res, next) => {
     next();
+    app.locals.success = req.flash('success');
 });
 
 //Routes
