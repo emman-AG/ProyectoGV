@@ -43,8 +43,9 @@ app.use(passport.session());
 //global variables
 
 app.use((req, res, next) => {
-    next();
     app.locals.success = req.flash('success');
+    app.locals.fail = req.flash('fail');
+    next();
 });
 
 //Routes
