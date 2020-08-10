@@ -31,7 +31,7 @@ router.get('/profile', isLoggedIn, (req, res) => {
     res.render('profile')
 });
 
-router.get('/logout', isNotLogged, (req, res) =>{
+router.get('/logout', (req, res) =>{
     req.logOut();
     res.redirect('/login');
 });

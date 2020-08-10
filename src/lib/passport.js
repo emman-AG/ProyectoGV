@@ -10,10 +10,9 @@ passport.use('local.signin', new LocalStrategy({
 }, async (req, username, password, done) =>{
     const rows = await db.query('SELECT * FROM users WHERE username = ?', [username]);
     if(rows.length > 0){
-        const user = rows[0];
-        const validPass = await helpers.matchPass(password, user.password);
-        if (validPass){
-            done(null, user, req.flash('success','Welcome' + user.username));
+        const user = rows[0];        
+        if (password == user.password){
+            done(null, user, req.flash('success','Welcome ' + user.username));
         }else{
             done(null, false, req.flash('fail','Icorrect Password'));
         }
@@ -36,7 +35,6 @@ passport.use('local.signup', new LocalStrategy({
         password,
         fullname
     };
-    newUSer.password = await helpers.encryptPassword(password);
     const result = await db.query('INSERT INTO users SET ?', [newUSer]);
     newUSer.id = result.insertId;
     return done(null, newUSer);

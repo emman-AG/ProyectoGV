@@ -1,12 +1,11 @@
 const bcrypt = require('bcryptjs');
 
-//Objeto que se crea para extraer metodos para poder incriptar
+//metodo para encryptar contraseñas
 const helpers = {};
-
 helpers.encryptPassword = async (password) => {
-    //le damos un patron de 10 requerido para poder cifrar
+    //10 saltos para una contraseña segura
     const salt = await bcrypt.genSalt(10);
-    //le pasamos la contraseña guadada en texto plano y el patron
+    //le pasamos la contraseña guadada en texto plano y los saltos que dara
     const passcript = await bcrypt.hash(password, salt);
     return passcript;
 };
