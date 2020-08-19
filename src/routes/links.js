@@ -10,6 +10,10 @@ router.get('/add', isLoggedIn, (req, res) => {
     res.render('links/add');
 });
 
+router.get('/form', (req, res) => {
+    res.render('links/Form');
+});
+
 router.post('/ad', isLoggedIn, async (req,res) =>{
     const {title, url, description} = req.body;
     const newLinks = {
