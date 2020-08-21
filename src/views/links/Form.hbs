@@ -1,5 +1,95 @@
 <div class="cotainer">
-    <div class="row form-box border border-info">
+    <div class="row form-box border border-info rounded">
+        <div class="container">
+            <form action="" method="POST">
 
+                {{!-- TITULO FORM --}}
+
+                <div class="row form-group border border-dark">
+                    <div class="col-2 text-center border border-dark">
+                        <img src="/img/logo.png" alt="LogoGV" width="70" height="40">
+                    </div>
+                    <div class="col-10 text-center border border-dark">
+                        <h2> SOLICITUD DE SOPORTE</h2>
+                    </div>
+                </div>
+
+                {{!-- QUIEN SOLICITA --}}
+
+                <div class="row form-group">
+                    <div class="col-4 text-center border border-dark">
+                        <h5><b>Fecha solicitud</b></h6>
+                    </div>
+                    <div class="col-4 text-center border border-dark">
+                        <h5><b>Responsalbles de ICT</b></h6>
+                    </div>
+                    <div class="col-4 text-center border border-dark">
+                        <h5><b>Responsable de reporte</b></h6>
+                    </div>
+
+                    <div class="col-4 text-center border border-dark">
+                        <h6 class="mt-2">DD/MM/AAAA</h6>
+                    </div>
+                    <div class="col-4 text-center border border-dark">
+                        <h6>Emmanuel Andrade /<br> Julio Villalon</h6>
+                    </div>
+                    <div class="col-4 text-center border border-dark">
+                        <h6 class="mt-2">Nobre Responsable</h6>
+                    </div>
+                </div>
+
+                {{!-- RADIO BUTTONS --}}
+
+                <div class="row col-6 mx-auto bg-white border border-dark rounded">
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="op1">Laptop/PC
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="radio" class="form-check-input" name="op1">Telefono
+                        </label>
+                    </div>
+                    <div class="form-check-inline disabled mx-auto">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="op1">Proyector
+                        </label>
+                    </div>
+
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="op1">Impresora
+                        </label>
+                    </div>
+                    
+                    {{!-- Separador de fila --}}
+
+                     <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="op1">Pantalla-Tv
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="radio" class="form-check-input" name="op1">Radio 
+                        </label>
+                    </div>
+                    <div class="form-check-inline disabled mx-auto">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="op1">Celular
+                        </label>
+                    </div>
+
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="op1">Otro
+                        </label>
+                    </div>
+
+                </div>
+
+
+            </form>
+        </div>
     </div>
 </div>
