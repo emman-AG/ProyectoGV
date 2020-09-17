@@ -6,15 +6,15 @@
                 {{!-- TITULO FORM --}}
 
                 <div class="row form-group border border-dark">
-                    <div class="col-2 text-center border border-dark">
+                    <div class="col-md-2 col-xs-12 text-center border border-dark">
                         <img src="/img/logo.png" alt="LogoGV" width="70" height="40">
                     </div>
-                    <div class="col-10 text-center border border-dark">
+                    <div class="col-md-10 col-xs-12 text-center border border-dark">
                         <h2> SOLICITUD DE SOPORTE</h2>
                     </div>
                 </div>
 
-                {{!-- QUIEN SOLICITA --}}
+                {{!-- Datos solicitud --}}
 
                 <div class="row form-group">
                     <div class="col-4 text-center border border-dark">
@@ -28,65 +28,229 @@
                     </div>
 
                     <div class="col-4 text-center border border-dark">
-                        <h6 class="mt-2">DD/MM/AAAA</h6>
+                        <h6 class="mt-2">{{ timeago created_at }}</h6>
                     </div>
                     <div class="col-4 text-center border border-dark">
                         <h6>Emmanuel Andrade /<br> Julio Villalon</h6>
                     </div>
                     <div class="col-4 text-center border border-dark">
-                        <h6 class="mt-2">Nobre Responsable</h6>
+                        <h6 class="mt-2">{{user.fullname}}</h6>
                     </div>
                 </div>
 
                 {{!-- RADIO BUTTONS --}}
-
-                <div class="row col-6 mx-auto bg-white border border-dark rounded">
+                <h5 class="text-center" id="h5">Equipo con falla:</h5>
+                <div class="row col-md-6 col-xs-12 mx-auto bg-white border border-dark rounded">
                     <div class="form-check-inline mx-auto">
                         <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="op1">Laptop/PC
+                            <input type="radio" class="form-check-input" id="laptop" name="op1" onclick="hs();">Laptop/PC
+                        </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label mx-auto">
-                            <input type="radio" class="form-check-input" name="op1">Telefono
+                            <input type="radio" class="form-check-input" id="Telefono"name="op1">Telefono
                         </label>
                     </div>
                     <div class="form-check-inline disabled mx-auto">
                         <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="op1">Proyector
+                            <input type="radio" class="form-check-input" id="proyector" name="op1">Proyector
                         </label>
                     </div>
 
                     <div class="form-check-inline mx-auto">
                         <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="op1">Impresora
+                            <input type="radio" class="form-check-input" id="impresora" name="op1">Impresora
                         </label>
                     </div>
-                    
+
                     {{!-- Separador de fila --}}
 
-                     <div class="form-check-inline mx-auto">
+                    <div class="form-check-inline mx-auto">
                         <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="op1">Pantalla-Tv
+                            <input type="radio" class="form-check-input" id="pantalla-tv" name="op1">Pantalla-Tv
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label mx-auto">
-                            <input type="radio" class="form-check-input" name="op1">Radio 
+                            <input type="radio" class="form-check-input" id="radio" name="op1">Radio
                         </label>
                     </div>
                     <div class="form-check-inline disabled mx-auto">
                         <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="op1">Celular
+                            <input type="radio" class="form-check-input" id="celular" name="op1">Celular
                         </label>
                     </div>
 
                     <div class="form-check-inline mx-auto">
                         <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="op1">Otro
+                            <input type="radio" class="form-check-input" id="otro" name="op1">Otro
                         </label>
                     </div>
 
                 </div>
+
+                {{!-- Hardware Software --}}
+
+                <div class="row col-md-3 col-xs-6 mx-auto bg-white border border-dark rounded mt-2" name="hs" hidden="true">
+                    <div class="form-check-inline disabled mx-auto">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="op2" onclick="software();">Software
+                        </label>
+                    </div>
+
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="op2" onclick="hadware();">Hardware
+                        </label>
+                    </div>
+                </div>
+
+    {{!---------------------------------- CheckBox -----------------------------------------------------------}}
+
+                                    {{!-- Hadware Laptop --}}
+
+                <div class="row col-md-4 col-xs-12 mx-auto bg-white border border-dark rounded mt-2" name="hslaptop" hidden="true">
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="pantalla">Pantalla
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="checkbox" class="form-check-input" value="mouse">mouse
+                        </label>
+                    </div>
+                    <div class="form-check-inline disabled mx-auto">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="cargador">cargador
+                        </label>
+                    </div>
+
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="teclado">Teclado
+                        </label>
+                    </div>
+
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="bateria">Bateria-Tv
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="checkbox" class="form-check-input" value="otro">Otro
+                        </label>
+                    </div>
+                </div>
+
+                                    {{!-- software Laptop --}}
+                
+                
+                <div class="row col-md-6 col-xs-12 mx-auto bg-white border border-dark rounded mt-2" name="hslaptop" hidden="true">
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="Microsoft office">Microsoft Office
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="checkbox" class="form-check-input" value="Impresion">Impresion
+                        </label>
+                    </div>
+                    <div class="form-check-inline disabled mx-auto">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="IBM Lotus">IBM Lotus Notes
+                        </label>
+                    </div>
+
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="PDF">Lector PDF
+                        </label>
+                    </div>
+
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="WinRar">WinRar
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="checkbox" class="form-check-input" value="Antivirus">Antivirus
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="checkbox" class="form-check-input" value="Hamachi">Hamachi
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="checkbox" class="form-check-input" value="Navegador">Navegadores
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="checkbox" class="form-check-input" value="Skype">Skype
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="checkbox" class="form-check-input" value="Zoom">Zoom
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="checkbox" class="form-check-input" value="Otro">Otro
+                        </label>
+                    </div>
+                </div>
+
+                                    {{!---------- telefono -----------}}
+                <div class="row col-md-4 col-xs-12 mx-auto bg-white border border-dark rounded mt-2" name="telefono" hidden="true">
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="pantalla">lotus
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="checkbox" class="form-check-input" value="mouse">word
+                        </label>
+                    </div>
+                    <div class="form-check-inline disabled mx-auto">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="cargador">otro
+                        </label>
+                    </div>
+
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="teclado">Teclado
+                        </label>
+                    </div>
+
+                    <div class="form-check-inline mx-auto">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="bateria">Bateria-Tv
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-auto">
+                            <input type="checkbox" class="form-check-input" value="otro">Otro
+                        </label>
+                    </div>
+                </div>
+
+                {{!-- TextArea --}}
+
+                <div class="form-group col-xl-6 col-md-10 mx-auto mt-2">
+                    <h5 class="text-center" for="comment">Especifica el tipo de falla:</h5>
+                    <textarea class="form-control border border-dark" rows="3" id="comment"></textarea>
+                </div>
+
+                
 
 
             </form>
